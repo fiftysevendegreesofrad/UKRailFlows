@@ -1,0 +1,1525 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <title>pydeck</title>
+        <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v1.13.0/mapbox-gl.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
+    <script src='https://cdn.jsdelivr.net/npm/@deck.gl/jupyter-widget@~9.0.*/dist/index.js'></script>
+    <style>
+    body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+#deck-container {
+  width: 100vw;
+  height: 100vh;
+}
+
+#deck-container canvas {
+  z-index: 1;
+  background: none;
+}
+    </style>
+  </head>
+  <body>
+    <div id="deck-container">
+    </div>
+  
+    <div style="position: fixed; top: 50px; left:50px; z-index: 1000; background-color: white; padding: 15px; border-radius: 10px;
+    font-family: 'Helvetica Neue', Arial, sans-serif; font-size:75%">
+        <p><a href="index.html">&uarr; back to list of maps</a></p>
+    <img src="Principal routes between 10 largest urban areas-trainreltime-legend.png"
+    </div>
+    
+    </body>
+  <script>
+    const container = document.getElementById('deck-container');
+    const jsonInput = {
+  "initialViewState": {
+    "bearing": 0,
+    "latitude": 54.3,
+    "longitude": -3.9,
+    "pitch": 45,
+    "zoom": 5.5
+  },
+  "layers": [
+    {
+      "@@type": "ArcLayer",
+      "data": [
+        {
+          "car_duration_avg": 106.0,
+          "car_fuel_price": 14.12057120001629,
+          "color from legend": 3,
+          "colors": [
+            188.6666666666667,
+            225.66666666666669,
+            238.0
+          ],
+          "dest_lat": 51.44981139329164,
+          "dest_lon": -2.58054661043566,
+          "destination": "bristol temple meads",
+          "origin": "birmingham new street",
+          "origin_lat": 52.47813008088713,
+          "origin_lon": -1.898673366512968,
+          "tooltiptext": "Birmingham New Street to Bristol Temple Meads\n \nRail has lower time than car (78%)\nMedian train time: 83 mins\nMedian train price: \u00a327.52\nCar time: 106 mins\nCar fuel price: \u00a314.12\n",
+          "train_duration_med": 83.0,
+          "train_price": 27.52,
+          "trainreltime": 0.7830188679245284
+        },
+        {
+          "car_duration_avg": 134.0,
+          "car_fuel_price": 17.402113600021043,
+          "color from legend": 3,
+          "colors": [
+            188.6666666666667,
+            225.66666666666669,
+            238.0
+          ],
+          "dest_lat": 51.47598525955394,
+          "dest_lon": -3.1786527061089997,
+          "destination": "cardiff central",
+          "origin": "birmingham new street",
+          "origin_lat": 52.47813008088713,
+          "origin_lon": -1.898673366512968,
+          "tooltiptext": "Birmingham New Street to Cardiff Central\n \nRail has lower time than car (90%)\nMedian train time: 120 mins\nMedian train price: \u00a325.28\nCar time: 134 mins\nCar fuel price: \u00a317.40\n",
+          "train_duration_med": 120.0,
+          "train_price": 25.28,
+          "trainreltime": 0.8955223880597015
+        },
+        {
+          "car_duration_avg": 290.0,
+          "car_fuel_price": 46.43878239999989,
+          "color from legend": 5,
+          "colors": [
+            253.33333333333334,
+            190.6666666666666,
+            112.66666666666661
+          ],
+          "dest_lat": 55.85975450705034,
+          "dest_lon": -4.257643159502638,
+          "destination": "glasgow central",
+          "origin": "birmingham new street",
+          "origin_lat": 52.47813008088713,
+          "origin_lon": -1.898673366512968,
+          "tooltiptext": "Birmingham New Street to Glasgow Central\n \nRail has higher time than car (128%)\nMedian train time: 371 mins\nMedian train price: \u00a383.76\nCar time: 290 mins\nCar fuel price: \u00a346.44\n",
+          "train_duration_med": 371.0,
+          "train_price": 83.76,
+          "trainreltime": 1.2793103448275862
+        },
+        {
+          "car_duration_avg": 126.0,
+          "car_fuel_price": 19.09260479999264,
+          "color from legend": 4,
+          "colors": [
+            255.0,
+            255.0,
+            191.0
+          ],
+          "dest_lat": 53.79429399546494,
+          "dest_lon": -1.547827258981434,
+          "destination": "leeds",
+          "origin": "birmingham new street",
+          "origin_lat": 52.47813008088713,
+          "origin_lon": -1.898673366512968,
+          "tooltiptext": "Birmingham New Street to Leeds\n \nRail has lower time than car (94%)\nMedian train time: 118 mins\nMedian train price: \u00a338.71\nCar time: 126 mins\nCar fuel price: \u00a319.09\n",
+          "train_duration_med": 118.0,
+          "train_price": 38.71,
+          "trainreltime": 0.9365079365079365
+        },
+        {
+          "car_duration_avg": 115.0,
+          "car_fuel_price": 15.811062399996512,
+          "color from legend": 3,
+          "colors": [
+            188.6666666666667,
+            225.66666666666669,
+            238.0
+          ],
+          "dest_lat": 53.40793882762651,
+          "dest_lon": -2.9773643756936,
+          "destination": "liverpool lime street",
+          "origin": "birmingham new street",
+          "origin_lat": 52.47813008088713,
+          "origin_lon": -1.898673366512968,
+          "tooltiptext": "Birmingham New Street to Liverpool Lime Street\n \nRail has lower time than car (90%)\nMedian train time: 104 mins\nMedian train price: \u00a316.73\nCar time: 115 mins\nCar fuel price: \u00a315.81\n",
+          "train_duration_med": 104.0,
+          "train_price": 16.73,
+          "trainreltime": 0.9043478260869565
+        },
+        {
+          "car_duration_avg": 142.0,
+          "car_fuel_price": 20.18645120000116,
+          "color from legend": 3,
+          "colors": [
+            188.6666666666667,
+            225.66666666666669,
+            238.0
+          ],
+          "dest_lat": 51.53066798144819,
+          "dest_lon": -0.12025306876634224,
+          "destination": "london kings cross",
+          "origin": "birmingham new street",
+          "origin_lat": 52.47813008088713,
+          "origin_lon": -1.898673366512968,
+          "tooltiptext": "Birmingham New Street to London Kings Cross\n \nRail has lower time than car (78%)\nMedian train time: 111 mins\nMedian train price: \u00a329.65\nCar time: 142 mins\nCar fuel price: \u00a320.19\n",
+          "train_duration_med": 111.0,
+          "train_price": 29.65,
+          "trainreltime": 0.7816901408450704
+        },
+        {
+          "car_duration_avg": 110.0,
+          "car_fuel_price": 13.921691200100632,
+          "color from legend": 3,
+          "colors": [
+            188.6666666666667,
+            225.66666666666669,
+            238.0
+          ],
+          "dest_lat": 53.47686751819972,
+          "dest_lon": -2.229822358323369,
+          "destination": "manchester piccadilly",
+          "origin": "birmingham new street",
+          "origin_lat": 52.47813008088713,
+          "origin_lon": -1.898673366512968,
+          "tooltiptext": "Birmingham New Street to Manchester Piccadilly\n \nRail has lower time than car (82%)\nMedian train time: 90 mins\nMedian train price: \u00a321.65\nCar time: 110 mins\nCar fuel price: \u00a313.92\n",
+          "train_duration_med": 90.0,
+          "train_price": 21.65,
+          "trainreltime": 0.8181818181818182
+        },
+        {
+          "car_duration_avg": 105.0,
+          "car_fuel_price": 14.418894399970592,
+          "color from legend": 2,
+          "colors": [
+            100.33333333333334,
+            154.33333333333334,
+            199.33333333333334
+          ],
+          "dest_lat": 53.3784068761088,
+          "dest_lon": -1.4620783765072314,
+          "destination": "sheffield",
+          "origin": "birmingham new street",
+          "origin_lat": 52.47813008088713,
+          "origin_lon": -1.898673366512968,
+          "tooltiptext": "Birmingham New Street to Sheffield\n \nRail has lower time than car (72%)\nMedian train time: 76 mins\nMedian train price: \u00a323.83\nCar time: 105 mins\nCar fuel price: \u00a314.42\n",
+          "train_duration_med": 76.0,
+          "train_price": 23.83,
+          "trainreltime": 0.7238095238095238
+        },
+        {
+          "car_duration_avg": 106.0,
+          "car_fuel_price": 14.12057120001629,
+          "color from legend": 3,
+          "colors": [
+            188.6666666666667,
+            225.66666666666669,
+            238.0
+          ],
+          "dest_lat": 52.47813008088713,
+          "dest_lon": -1.898673366512968,
+          "destination": "birmingham new street",
+          "origin": "bristol temple meads",
+          "origin_lat": 51.44981139329164,
+          "origin_lon": -2.58054661043566,
+          "tooltiptext": "Bristol Temple Meads to Birmingham New Street\n \nRail has lower time than car (78%)\nMedian train time: 83 mins\nMedian train price: \u00a327.52\nCar time: 106 mins\nCar fuel price: \u00a314.12\n",
+          "train_duration_med": 83.0,
+          "train_price": 27.52,
+          "trainreltime": 0.7830188679245284
+        },
+        {
+          "car_duration_avg": 62.0,
+          "car_fuel_price": 7.229334399999977,
+          "color from legend": 4,
+          "colors": [
+            255.0,
+            255.0,
+            191.0
+          ],
+          "dest_lat": 51.47598525955394,
+          "dest_lon": -3.1786527061089997,
+          "destination": "cardiff central",
+          "origin": "bristol temple meads",
+          "origin_lat": 51.44981139329164,
+          "origin_lon": -2.58054661043566,
+          "tooltiptext": "Bristol Temple Meads to Cardiff Central\n \nRail has lower time than car (98%)\nMedian train time: 61 mins\nMedian train price: \u00a39.34\nCar time: 62 mins\nCar fuel price: \u00a37.23\n",
+          "train_duration_med": 61.0,
+          "train_price": 9.34,
+          "trainreltime": 0.9838709677419355
+        },
+        {
+          "car_duration_avg": 364.0,
+          "car_fuel_price": 59.66438719999879,
+          "color from legend": 4,
+          "colors": [
+            255.0,
+            255.0,
+            191.0
+          ],
+          "dest_lat": 55.85975450705034,
+          "dest_lon": -4.257643159502638,
+          "destination": "glasgow central",
+          "origin": "bristol temple meads",
+          "origin_lat": 51.44981139329164,
+          "origin_lon": -2.58054661043566,
+          "tooltiptext": "Bristol Temple Meads to Glasgow Central\n \nRail has higher time than car (107%)\nMedian train time: 388 mins\nMedian train price: \u00a390.57\nCar time: 364 mins\nCar fuel price: \u00a359.66\n",
+          "train_duration_med": 388.0,
+          "train_price": 90.57,
+          "trainreltime": 1.065934065934066
+        },
+        {
+          "car_duration_avg": 208.0,
+          "car_fuel_price": 33.1137360000137,
+          "color from legend": 4,
+          "colors": [
+            255.0,
+            255.0,
+            191.0
+          ],
+          "dest_lat": 53.79429399546494,
+          "dest_lon": -1.547827258981434,
+          "destination": "leeds",
+          "origin": "bristol temple meads",
+          "origin_lat": 51.44981139329164,
+          "origin_lon": -2.58054661043566,
+          "tooltiptext": "Bristol Temple Meads to Leeds\n \nRail has lower time than car (99%)\nMedian train time: 206 mins\nMedian train price: \u00a372.22\nCar time: 208 mins\nCar fuel price: \u00a333.11\n",
+          "train_duration_med": 206.0,
+          "train_price": 72.22,
+          "trainreltime": 0.9903846153846154
+        },
+        {
+          "car_duration_avg": 191.0,
+          "car_fuel_price": 28.63890560000348,
+          "color from legend": 5,
+          "colors": [
+            253.33333333333334,
+            190.6666666666666,
+            112.66666666666661
+          ],
+          "dest_lat": 53.40793882762651,
+          "dest_lon": -2.9773643756936,
+          "destination": "liverpool lime street",
+          "origin": "bristol temple meads",
+          "origin_lat": 51.44981139329164,
+          "origin_lon": -2.58054661043566,
+          "tooltiptext": "Bristol Temple Meads to Liverpool Lime Street\n \nRail has higher time than car (112%)\nMedian train time: 213 mins\nMedian train price: \u00a351.40\nCar time: 191 mins\nCar fuel price: \u00a328.64\n",
+          "train_duration_med": 213.0,
+          "train_price": 51.4,
+          "trainreltime": 1.1151832460732984
+        },
+        {
+          "car_duration_avg": 136.0,
+          "car_fuel_price": 18.794281600041224,
+          "color from legend": 2,
+          "colors": [
+            100.33333333333334,
+            154.33333333333334,
+            199.33333333333334
+          ],
+          "dest_lat": 51.517506448621155,
+          "dest_lon": -0.17745394955337404,
+          "destination": "london paddington",
+          "origin": "bristol temple meads",
+          "origin_lat": 51.44981139329164,
+          "origin_lon": -2.58054661043566,
+          "tooltiptext": "Bristol Temple Meads to London Paddington\n \nRail has lower time than car (70%)\nMedian train time: 95 mins\nMedian train price: \u00a339.54\nCar time: 136 mins\nCar fuel price: \u00a318.79\n",
+          "train_duration_med": 95.0,
+          "train_price": 39.54,
+          "trainreltime": 0.6985294117647058
+        },
+        {
+          "car_duration_avg": 186.0,
+          "car_fuel_price": 26.94841439998853,
+          "color from legend": 4,
+          "colors": [
+            255.0,
+            255.0,
+            191.0
+          ],
+          "dest_lat": 53.47686751819972,
+          "dest_lon": -2.229822358323369,
+          "destination": "manchester piccadilly",
+          "origin": "bristol temple meads",
+          "origin_lat": 51.44981139329164,
+          "origin_lon": -2.58054661043566,
+          "tooltiptext": "Bristol Temple Meads to Manchester Piccadilly\n \nRail has lower time than car (99%)\nMedian train time: 185 mins\nMedian train price: \u00a352.92\nCar time: 186 mins\nCar fuel price: \u00a326.95\n",
+          "train_duration_med": 185.0,
+          "train_price": 52.92,
+          "trainreltime": 0.9946236559139785
+        },
+        {
+          "car_duration_avg": 183.0,
+          "car_fuel_price": 28.440025600006173,
+          "color from legend": 3,
+          "colors": [
+            188.6666666666667,
+            225.66666666666669,
+            238.0
+          ],
+          "dest_lat": 53.3784068761088,
+          "dest_lon": -1.4620783765072314,
+          "destination": "sheffield",
+          "origin": "bristol temple meads",
+          "origin_lat": 51.44981139329164,
+          "origin_lon": -2.58054661043566,
+          "tooltiptext": "Bristol Temple Meads to Sheffield\n \nRail has lower time than car (89%)\nMedian train time: 163 mins\nMedian train price: \u00a359.59\nCar time: 183 mins\nCar fuel price: \u00a328.44\n",
+          "train_duration_med": 163.0,
+          "train_price": 59.59,
+          "trainreltime": 0.8907103825136612
+        },
+        {
+          "car_duration_avg": 134.0,
+          "car_fuel_price": 17.402113600021043,
+          "color from legend": 3,
+          "colors": [
+            188.6666666666667,
+            225.66666666666669,
+            238.0
+          ],
+          "dest_lat": 52.47813008088713,
+          "dest_lon": -1.898673366512968,
+          "destination": "birmingham new street",
+          "origin": "cardiff central",
+          "origin_lat": 51.47598525955394,
+          "origin_lon": -3.1786527061089997,
+          "tooltiptext": "Cardiff Central to Birmingham New Street\n \nRail has lower time than car (90%)\nMedian train time: 120 mins\nMedian train price: \u00a325.28\nCar time: 134 mins\nCar fuel price: \u00a317.40\n",
+          "train_duration_med": 120.0,
+          "train_price": 25.28,
+          "trainreltime": 0.8955223880597015
+        },
+        {
+          "car_duration_avg": 62.0,
+          "car_fuel_price": 7.229334399999977,
+          "color from legend": 4,
+          "colors": [
+            255.0,
+            255.0,
+            191.0
+          ],
+          "dest_lat": 51.44981139329164,
+          "dest_lon": -2.58054661043566,
+          "destination": "bristol temple meads",
+          "origin": "cardiff central",
+          "origin_lat": 51.47598525955394,
+          "origin_lon": -3.1786527061089997,
+          "tooltiptext": "Cardiff Central to Bristol Temple Meads\n \nRail has lower time than car (98%)\nMedian train time: 61 mins\nMedian train price: \u00a39.34\nCar time: 62 mins\nCar fuel price: \u00a37.23\n",
+          "train_duration_med": 61.0,
+          "train_price": 9.34,
+          "trainreltime": 0.9838709677419355
+        },
+        {
+          "car_duration_avg": 395.0,
+          "car_fuel_price": 63.04536960000274,
+          "color from legend": 4,
+          "colors": [
+            255.0,
+            255.0,
+            191.0
+          ],
+          "dest_lat": 55.85975450705034,
+          "dest_lon": -4.257643159502638,
+          "destination": "glasgow central",
+          "origin": "cardiff central",
+          "origin_lat": 51.47598525955394,
+          "origin_lon": -3.1786527061089997,
+          "tooltiptext": "Cardiff Central to Glasgow Central\n \nRail has lower time than car (97%)\nMedian train time: 385 mins\nMedian train price: \u00a366.83\nCar time: 395 mins\nCar fuel price: \u00a363.05\n",
+          "train_duration_med": 385.0,
+          "train_price": 66.83,
+          "trainreltime": 0.9746835443037974
+        },
+        {
+          "car_duration_avg": 240.0,
+          "car_fuel_price": 36.4947167999983,
+          "color from legend": 5,
+          "colors": [
+            253.33333333333334,
+            190.6666666666666,
+            112.66666666666661
+          ],
+          "dest_lat": 53.79429399546494,
+          "dest_lon": -1.547827258981434,
+          "destination": "leeds",
+          "origin": "cardiff central",
+          "origin_lat": 51.47598525955394,
+          "origin_lon": -3.1786527061089997,
+          "tooltiptext": "Cardiff Central to Leeds\n \nRail has higher time than car (111%)\nMedian train time: 267 mins\nMedian train price: \u00a374.07\nCar time: 240 mins\nCar fuel price: \u00a336.49\n",
+          "train_duration_med": 267.0,
+          "train_price": 74.07,
+          "trainreltime": 1.1125
+        },
+        {
+          "car_duration_avg": 223.0,
+          "car_fuel_price": 32.019887999994495,
+          "color from legend": 4,
+          "colors": [
+            255.0,
+            255.0,
+            191.0
+          ],
+          "dest_lat": 53.40793882762651,
+          "dest_lon": -2.9773643756936,
+          "destination": "liverpool lime street",
+          "origin": "cardiff central",
+          "origin_lat": 51.47598525955394,
+          "origin_lon": -3.1786527061089997,
+          "tooltiptext": "Cardiff Central to Liverpool Lime Street\n \nRail has higher time than car (106%)\nMedian train time: 236 mins\nMedian train price: \u00a350.85\nCar time: 223 mins\nCar fuel price: \u00a332.02\n",
+          "train_duration_med": 236.0,
+          "train_price": 50.85,
+          "trainreltime": 1.0582959641255605
+        },
+        {
+          "car_duration_avg": 175.0,
+          "car_fuel_price": 24.164076800170445,
+          "color from legend": 1,
+          "colors": [
+            49.0,
+            54.0,
+            149.0
+          ],
+          "dest_lat": 51.517506448621155,
+          "dest_lon": -0.17745394955337404,
+          "destination": "london paddington",
+          "origin": "cardiff central",
+          "origin_lat": 51.47598525955394,
+          "origin_lon": -3.1786527061089997,
+          "tooltiptext": "Cardiff Central to London Paddington\n \nRail has lower time than car (65%)\nMedian train time: 113 mins\nMedian train price: \u00a349.82\nCar time: 175 mins\nCar fuel price: \u00a324.16\n",
+          "train_duration_med": 113.0,
+          "train_price": 49.82,
+          "trainreltime": 0.6457142857142857
+        },
+        {
+          "car_duration_avg": 217.0,
+          "car_fuel_price": 30.32939679999102,
+          "color from legend": 4,
+          "colors": [
+            255.0,
+            255.0,
+            191.0
+          ],
+          "dest_lat": 53.47686751819972,
+          "dest_lon": -2.229822358323369,
+          "destination": "manchester piccadilly",
+          "origin": "cardiff central",
+          "origin_lat": 51.47598525955394,
+          "origin_lon": -3.1786527061089997,
+          "tooltiptext": "Cardiff Central to Manchester Piccadilly\n \nRail has lower time than car (94%)\nMedian train time: 205 mins\nMedian train price: \u00a348.14\nCar time: 217 mins\nCar fuel price: \u00a330.33\n",
+          "train_duration_med": 205.0,
+          "train_price": 48.14,
+          "trainreltime": 0.9447004608294931
+        },
+        {
+          "car_duration_avg": 215.0,
+          "car_fuel_price": 31.82100639999597,
+          "color from legend": 4,
+          "colors": [
+            255.0,
+            255.0,
+            191.0
+          ],
+          "dest_lat": 53.3784068761088,
+          "dest_lon": -1.4620783765072314,
+          "destination": "sheffield",
+          "origin": "cardiff central",
+          "origin_lat": 51.47598525955394,
+          "origin_lon": -3.1786527061089997,
+          "tooltiptext": "Cardiff Central to Sheffield\n \nRail has lower time than car (97%)\nMedian train time: 209 mins\nMedian train price: \u00a359.43\nCar time: 215 mins\nCar fuel price: \u00a331.82\n",
+          "train_duration_med": 209.0,
+          "train_price": 59.43,
+          "trainreltime": 0.9720930232558139
+        },
+        {
+          "car_duration_avg": 290.0,
+          "car_fuel_price": 46.43878239999989,
+          "color from legend": 5,
+          "colors": [
+            253.33333333333334,
+            190.6666666666666,
+            112.66666666666661
+          ],
+          "dest_lat": 52.47813008088713,
+          "dest_lon": -1.898673366512968,
+          "destination": "birmingham new street",
+          "origin": "glasgow central",
+          "origin_lat": 55.85975450705034,
+          "origin_lon": -4.257643159502638,
+          "tooltiptext": "Glasgow Central to Birmingham New Street\n \nRail has higher time than car (128%)\nMedian train time: 371 mins\nMedian train price: \u00a383.76\nCar time: 290 mins\nCar fuel price: \u00a346.44\n",
+          "train_duration_med": 371.0,
+          "train_price": 83.76,
+          "trainreltime": 1.2793103448275862
+        },
+        {
+          "car_duration_avg": 364.0,
+          "car_fuel_price": 59.66438719999879,
+          "color from legend": 4,
+          "colors": [
+            255.0,
+            255.0,
+            191.0
+          ],
+          "dest_lat": 51.44981139329164,
+          "dest_lon": -2.58054661043566,
+          "destination": "bristol temple meads",
+          "origin": "glasgow central",
+          "origin_lat": 55.85975450705034,
+          "origin_lon": -4.257643159502638,
+          "tooltiptext": "Glasgow Central to Bristol Temple Meads\n \nRail has higher time than car (107%)\nMedian train time: 388 mins\nMedian train price: \u00a390.57\nCar time: 364 mins\nCar fuel price: \u00a359.66\n",
+          "train_duration_med": 388.0,
+          "train_price": 90.57,
+          "trainreltime": 1.065934065934066
+        },
+        {
+          "car_duration_avg": 395.0,
+          "car_fuel_price": 63.04536960000274,
+          "color from legend": 4,
+          "colors": [
+            255.0,
+            255.0,
+            191.0
+          ],
+          "dest_lat": 51.47598525955394,
+          "dest_lon": -3.1786527061089997,
+          "destination": "cardiff central",
+          "origin": "glasgow central",
+          "origin_lat": 55.85975450705034,
+          "origin_lon": -4.257643159502638,
+          "tooltiptext": "Glasgow Central to Cardiff Central\n \nRail has lower time than car (97%)\nMedian train time: 385 mins\nMedian train price: \u00a366.83\nCar time: 395 mins\nCar fuel price: \u00a363.05\n",
+          "train_duration_med": 385.0,
+          "train_price": 66.83,
+          "trainreltime": 0.9746835443037974
+        },
+        {
+          "car_duration_avg": 236.0,
+          "car_fuel_price": 36.395276800007984,
+          "color from legend": 5,
+          "colors": [
+            253.33333333333334,
+            190.6666666666666,
+            112.66666666666661
+          ],
+          "dest_lat": 53.79429399546494,
+          "dest_lon": -1.547827258981434,
+          "destination": "leeds",
+          "origin": "glasgow central",
+          "origin_lat": 55.85975450705034,
+          "origin_lon": -4.257643159502638,
+          "tooltiptext": "Glasgow Central to Leeds\n \nRail has higher time than car (109%)\nMedian train time: 258 mins\nMedian train price: \u00a330.93\nCar time: 236 mins\nCar fuel price: \u00a336.40\n",
+          "train_duration_med": 258.0,
+          "train_price": 30.93,
+          "trainreltime": 1.0932203389830508
+        },
+        {
+          "car_duration_avg": 227.0,
+          "car_fuel_price": 35.301428799986354,
+          "color from legend": 4,
+          "colors": [
+            255.0,
+            255.0,
+            191.0
+          ],
+          "dest_lat": 53.40793882762651,
+          "dest_lon": -2.9773643756936,
+          "destination": "liverpool lime street",
+          "origin": "glasgow central",
+          "origin_lat": 55.85975450705034,
+          "origin_lon": -4.257643159502638,
+          "tooltiptext": "Glasgow Central to Liverpool Lime Street\n \nRail has lower time than car (93%)\nMedian train time: 212 mins\nMedian train price: \u00a326.49\nCar time: 227 mins\nCar fuel price: \u00a335.30\n",
+          "train_duration_med": 212.0,
+          "train_price": 26.49,
+          "trainreltime": 0.933920704845815
+        },
+        {
+          "car_duration_avg": 430.0,
+          "car_fuel_price": 66.42635199999981,
+          "color from legend": 2,
+          "colors": [
+            100.33333333333334,
+            154.33333333333334,
+            199.33333333333334
+          ],
+          "dest_lat": 51.49502816773417,
+          "dest_lon": -0.14438072783706812,
+          "destination": "london victoria",
+          "origin": "glasgow central",
+          "origin_lat": 55.85975450705034,
+          "origin_lon": -4.257643159502638,
+          "tooltiptext": "Glasgow Central to London Victoria\n \nRail has lower time than car (71%)\nMedian train time: 305 mins\nMedian train price: \u00a374.06\nCar time: 430 mins\nCar fuel price: \u00a366.43\n",
+          "train_duration_med": 305.0,
+          "train_price": 74.06,
+          "trainreltime": 0.7093023255813954
+        },
+        {
+          "car_duration_avg": 220.0,
+          "car_fuel_price": 34.406463999999694,
+          "color from legend": 3,
+          "colors": [
+            188.6666666666667,
+            225.66666666666669,
+            238.0
+          ],
+          "dest_lat": 53.47686751819972,
+          "dest_lon": -2.229822358323369,
+          "destination": "manchester piccadilly",
+          "origin": "glasgow central",
+          "origin_lat": 55.85975450705034,
+          "origin_lon": -4.257643159502638,
+          "tooltiptext": "Glasgow Central to Manchester Piccadilly\n \nRail has lower time than car (90%)\nMedian train time: 198 mins\nMedian train price: \u00a329.19\nCar time: 220 mins\nCar fuel price: \u00a334.41\n",
+          "train_duration_med": 198.0,
+          "train_price": 29.19,
+          "trainreltime": 0.9
+        },
+        {
+          "car_duration_avg": 263.0,
+          "car_fuel_price": 40.67122399999359,
+          "color from legend": 4,
+          "colors": [
+            255.0,
+            255.0,
+            191.0
+          ],
+          "dest_lat": 53.3784068761088,
+          "dest_lon": -1.4620783765072314,
+          "destination": "sheffield",
+          "origin": "glasgow central",
+          "origin_lat": 55.85975450705034,
+          "origin_lon": -4.257643159502638,
+          "tooltiptext": "Glasgow Central to Sheffield\n \nRail has higher time than car (105%)\nMedian train time: 276 mins\nMedian train price: \u00a341.68\nCar time: 263 mins\nCar fuel price: \u00a340.67\n",
+          "train_duration_med": 276.0,
+          "train_price": 41.68,
+          "trainreltime": 1.049429657794677
+        },
+        {
+          "car_duration_avg": 126.0,
+          "car_fuel_price": 19.09260479999264,
+          "color from legend": 4,
+          "colors": [
+            255.0,
+            255.0,
+            191.0
+          ],
+          "dest_lat": 52.47813008088713,
+          "dest_lon": -1.898673366512968,
+          "destination": "birmingham new street",
+          "origin": "leeds",
+          "origin_lat": 53.79429399546494,
+          "origin_lon": -1.547827258981434,
+          "tooltiptext": "Leeds to Birmingham New Street\n \nRail has lower time than car (94%)\nMedian train time: 118 mins\nMedian train price: \u00a338.71\nCar time: 126 mins\nCar fuel price: \u00a319.09\n",
+          "train_duration_med": 118.0,
+          "train_price": 38.71,
+          "trainreltime": 0.9365079365079365
+        },
+        {
+          "car_duration_avg": 208.0,
+          "car_fuel_price": 33.1137360000137,
+          "color from legend": 4,
+          "colors": [
+            255.0,
+            255.0,
+            191.0
+          ],
+          "dest_lat": 51.44981139329164,
+          "dest_lon": -2.58054661043566,
+          "destination": "bristol temple meads",
+          "origin": "leeds",
+          "origin_lat": 53.79429399546494,
+          "origin_lon": -1.547827258981434,
+          "tooltiptext": "Leeds to Bristol Temple Meads\n \nRail has lower time than car (99%)\nMedian train time: 206 mins\nMedian train price: \u00a372.22\nCar time: 208 mins\nCar fuel price: \u00a333.11\n",
+          "train_duration_med": 206.0,
+          "train_price": 72.22,
+          "trainreltime": 0.9903846153846154
+        },
+        {
+          "car_duration_avg": 240.0,
+          "car_fuel_price": 36.4947167999983,
+          "color from legend": 5,
+          "colors": [
+            253.33333333333334,
+            190.6666666666666,
+            112.66666666666661
+          ],
+          "dest_lat": 51.47598525955394,
+          "dest_lon": -3.1786527061089997,
+          "destination": "cardiff central",
+          "origin": "leeds",
+          "origin_lat": 53.79429399546494,
+          "origin_lon": -1.547827258981434,
+          "tooltiptext": "Leeds to Cardiff Central\n \nRail has higher time than car (111%)\nMedian train time: 267 mins\nMedian train price: \u00a374.07\nCar time: 240 mins\nCar fuel price: \u00a336.49\n",
+          "train_duration_med": 267.0,
+          "train_price": 74.07,
+          "trainreltime": 1.1125
+        },
+        {
+          "car_duration_avg": 236.0,
+          "car_fuel_price": 36.395276800007984,
+          "color from legend": 5,
+          "colors": [
+            253.33333333333334,
+            190.6666666666666,
+            112.66666666666661
+          ],
+          "dest_lat": 55.85975450705034,
+          "dest_lon": -4.257643159502638,
+          "destination": "glasgow central",
+          "origin": "leeds",
+          "origin_lat": 53.79429399546494,
+          "origin_lon": -1.547827258981434,
+          "tooltiptext": "Leeds to Glasgow Central\n \nRail has higher time than car (109%)\nMedian train time: 258 mins\nMedian train price: \u00a330.93\nCar time: 236 mins\nCar fuel price: \u00a336.40\n",
+          "train_duration_med": 258.0,
+          "train_price": 30.93,
+          "trainreltime": 1.0932203389830508
+        },
+        {
+          "car_duration_avg": 88.0,
+          "car_fuel_price": 11.535115200013172,
+          "color from legend": 5,
+          "colors": [
+            253.33333333333334,
+            190.6666666666666,
+            112.66666666666661
+          ],
+          "dest_lat": 53.40793882762651,
+          "dest_lon": -2.9773643756936,
+          "destination": "liverpool lime street",
+          "origin": "leeds",
+          "origin_lat": 53.79429399546494,
+          "origin_lon": -1.547827258981434,
+          "tooltiptext": "Leeds to Liverpool Lime Street\n \nRail has higher time than car (109%)\nMedian train time: 96 mins\nMedian train price: \u00a321.13\nCar time: 88 mins\nCar fuel price: \u00a311.54\n",
+          "train_duration_med": 96.0,
+          "train_price": 21.13,
+          "trainreltime": 1.0909090909090908
+        },
+        {
+          "car_duration_avg": 216.0,
+          "car_fuel_price": 31.02548160024188,
+          "color from legend": 1,
+          "colors": [
+            49.0,
+            54.0,
+            149.0
+          ],
+          "dest_lat": 51.53066798144819,
+          "dest_lon": -0.12025306876634224,
+          "destination": "london kings cross",
+          "origin": "leeds",
+          "origin_lat": 53.79429399546494,
+          "origin_lon": -1.547827258981434,
+          "tooltiptext": "Leeds to London Kings Cross\n \nRail has lower time than car (62%)\nMedian train time: 135 mins\nMedian train price: \u00a348.03\nCar time: 216 mins\nCar fuel price: \u00a331.03\n",
+          "train_duration_med": 135.0,
+          "train_price": 48.03,
+          "trainreltime": 0.625
+        },
+        {
+          "car_duration_avg": 63.0,
+          "car_fuel_price": 6.771908800001228,
+          "color from legend": 4,
+          "colors": [
+            255.0,
+            255.0,
+            191.0
+          ],
+          "dest_lat": 53.47686751819972,
+          "dest_lon": -2.229822358323369,
+          "destination": "manchester piccadilly",
+          "origin": "leeds",
+          "origin_lat": 53.79429399546494,
+          "origin_lon": -1.547827258981434,
+          "tooltiptext": "Leeds to Manchester Piccadilly\n \nRail has higher time than car (105%)\nMedian train time: 66 mins\nMedian train price: \u00a314.27\nCar time: 63 mins\nCar fuel price: \u00a36.77\n",
+          "train_duration_med": 66.0,
+          "train_price": 14.27,
+          "trainreltime": 1.0476190476190477
+        },
+        {
+          "car_duration_avg": 46.0,
+          "car_fuel_price": 5.568676800001361,
+          "color from legend": 3,
+          "colors": [
+            188.6666666666667,
+            225.66666666666669,
+            238.0
+          ],
+          "dest_lat": 53.3784068761088,
+          "dest_lon": -1.4620783765072314,
+          "destination": "sheffield",
+          "origin": "leeds",
+          "origin_lat": 53.79429399546494,
+          "origin_lon": -1.547827258981434,
+          "tooltiptext": "Leeds to Sheffield\n \nRail has lower time than car (91%)\nMedian train time: 42 mins\nMedian train price: \u00a38.35\nCar time: 46 mins\nCar fuel price: \u00a35.57\n",
+          "train_duration_med": 42.0,
+          "train_price": 8.35,
+          "trainreltime": 0.9130434782608695
+        },
+        {
+          "car_duration_avg": 115.0,
+          "car_fuel_price": 15.811062399996512,
+          "color from legend": 3,
+          "colors": [
+            188.6666666666667,
+            225.66666666666669,
+            238.0
+          ],
+          "dest_lat": 52.47813008088713,
+          "dest_lon": -1.898673366512968,
+          "destination": "birmingham new street",
+          "origin": "liverpool lime street",
+          "origin_lat": 53.40793882762651,
+          "origin_lon": -2.9773643756936,
+          "tooltiptext": "Liverpool Lime Street to Birmingham New Street\n \nRail has lower time than car (90%)\nMedian train time: 104 mins\nMedian train price: \u00a316.73\nCar time: 115 mins\nCar fuel price: \u00a315.81\n",
+          "train_duration_med": 104.0,
+          "train_price": 16.73,
+          "trainreltime": 0.9043478260869565
+        },
+        {
+          "car_duration_avg": 191.0,
+          "car_fuel_price": 28.63890560000348,
+          "color from legend": 5,
+          "colors": [
+            253.33333333333334,
+            190.6666666666666,
+            112.66666666666661
+          ],
+          "dest_lat": 51.44981139329164,
+          "dest_lon": -2.58054661043566,
+          "destination": "bristol temple meads",
+          "origin": "liverpool lime street",
+          "origin_lat": 53.40793882762651,
+          "origin_lon": -2.9773643756936,
+          "tooltiptext": "Liverpool Lime Street to Bristol Temple Meads\n \nRail has higher time than car (112%)\nMedian train time: 213 mins\nMedian train price: \u00a351.40\nCar time: 191 mins\nCar fuel price: \u00a328.64\n",
+          "train_duration_med": 213.0,
+          "train_price": 51.4,
+          "trainreltime": 1.1151832460732984
+        },
+        {
+          "car_duration_avg": 223.0,
+          "car_fuel_price": 32.019887999994495,
+          "color from legend": 4,
+          "colors": [
+            255.0,
+            255.0,
+            191.0
+          ],
+          "dest_lat": 51.47598525955394,
+          "dest_lon": -3.1786527061089997,
+          "destination": "cardiff central",
+          "origin": "liverpool lime street",
+          "origin_lat": 53.40793882762651,
+          "origin_lon": -2.9773643756936,
+          "tooltiptext": "Liverpool Lime Street to Cardiff Central\n \nRail has higher time than car (106%)\nMedian train time: 236 mins\nMedian train price: \u00a350.85\nCar time: 223 mins\nCar fuel price: \u00a332.02\n",
+          "train_duration_med": 236.0,
+          "train_price": 50.85,
+          "trainreltime": 1.0582959641255605
+        },
+        {
+          "car_duration_avg": 227.0,
+          "car_fuel_price": 35.301428799986354,
+          "color from legend": 4,
+          "colors": [
+            255.0,
+            255.0,
+            191.0
+          ],
+          "dest_lat": 55.85975450705034,
+          "dest_lon": -4.257643159502638,
+          "destination": "glasgow central",
+          "origin": "liverpool lime street",
+          "origin_lat": 53.40793882762651,
+          "origin_lon": -2.9773643756936,
+          "tooltiptext": "Liverpool Lime Street to Glasgow Central\n \nRail has lower time than car (93%)\nMedian train time: 212 mins\nMedian train price: \u00a326.49\nCar time: 227 mins\nCar fuel price: \u00a335.30\n",
+          "train_duration_med": 212.0,
+          "train_price": 26.49,
+          "trainreltime": 0.933920704845815
+        },
+        {
+          "car_duration_avg": 88.0,
+          "car_fuel_price": 11.535115200013172,
+          "color from legend": 5,
+          "colors": [
+            253.33333333333334,
+            190.6666666666666,
+            112.66666666666661
+          ],
+          "dest_lat": 53.79429399546494,
+          "dest_lon": -1.547827258981434,
+          "destination": "leeds",
+          "origin": "liverpool lime street",
+          "origin_lat": 53.40793882762651,
+          "origin_lon": -2.9773643756936,
+          "tooltiptext": "Liverpool Lime Street to Leeds\n \nRail has higher time than car (109%)\nMedian train time: 96 mins\nMedian train price: \u00a321.13\nCar time: 88 mins\nCar fuel price: \u00a311.54\n",
+          "train_duration_med": 96.0,
+          "train_price": 21.13,
+          "trainreltime": 1.0909090909090908
+        },
+        {
+          "car_duration_avg": 240.0,
+          "car_fuel_price": 33.71037919967285,
+          "color from legend": 1,
+          "colors": [
+            49.0,
+            54.0,
+            149.0
+          ],
+          "dest_lat": 51.52848652715305,
+          "dest_lon": -0.1351346344042589,
+          "destination": "london euston",
+          "origin": "liverpool lime street",
+          "origin_lat": 53.40793882762651,
+          "origin_lon": -2.9773643756936,
+          "tooltiptext": "Liverpool Lime Street to London Euston\n \nRail has lower time than car (59%)\nMedian train time: 141 mins\nMedian train price: \u00a349.10\nCar time: 240 mins\nCar fuel price: \u00a333.71\n",
+          "train_duration_med": 141.0,
+          "train_price": 49.1,
+          "trainreltime": 0.5875
+        },
+        {
+          "car_duration_avg": 53.0,
+          "car_fuel_price": 5.409571199978089,
+          "color from legend": 2,
+          "colors": [
+            100.33333333333334,
+            154.33333333333334,
+            199.33333333333334
+          ],
+          "dest_lat": 53.487349528894356,
+          "dest_lon": -2.2427042179711583,
+          "destination": "manchester victoria",
+          "origin": "liverpool lime street",
+          "origin_lat": 53.40793882762651,
+          "origin_lon": -2.9773643756936,
+          "tooltiptext": "Liverpool Lime Street to Manchester Victoria\n \nRail has lower time than car (68%)\nMedian train time: 36 mins\nMedian train price: \u00a39.65\nCar time: 53 mins\nCar fuel price: \u00a35.41\n",
+          "train_duration_med": 36.0,
+          "train_price": 9.65,
+          "trainreltime": 0.6792452830188679
+        },
+        {
+          "car_duration_avg": 123.0,
+          "car_fuel_price": 12.529521599994991,
+          "color from legend": 3,
+          "colors": [
+            188.6666666666667,
+            225.66666666666669,
+            238.0
+          ],
+          "dest_lat": 53.3784068761088,
+          "dest_lon": -1.4620783765072314,
+          "destination": "sheffield",
+          "origin": "liverpool lime street",
+          "origin_lat": 53.40793882762651,
+          "origin_lon": -2.9773643756936,
+          "tooltiptext": "Liverpool Lime Street to Sheffield\n \nRail has lower time than car (86%)\nMedian train time: 106 mins\nMedian train price: \u00a318.16\nCar time: 123 mins\nCar fuel price: \u00a312.53\n",
+          "train_duration_med": 106.0,
+          "train_price": 18.16,
+          "trainreltime": 0.8617886178861789
+        },
+        {
+          "car_duration_avg": 142.0,
+          "car_fuel_price": 20.18645120000116,
+          "color from legend": 3,
+          "colors": [
+            188.6666666666667,
+            225.66666666666669,
+            238.0
+          ],
+          "dest_lat": 52.47813008088713,
+          "dest_lon": -1.898673366512968,
+          "destination": "birmingham new street",
+          "origin": "london kings cross",
+          "origin_lat": 51.53066798144819,
+          "origin_lon": -0.12025306876634224,
+          "tooltiptext": "London Kings Cross to Birmingham New Street\n \nRail has lower time than car (78%)\nMedian train time: 111 mins\nMedian train price: \u00a329.65\nCar time: 142 mins\nCar fuel price: \u00a320.19\n",
+          "train_duration_med": 111.0,
+          "train_price": 29.65,
+          "trainreltime": 0.7816901408450704
+        },
+        {
+          "car_duration_avg": 136.0,
+          "car_fuel_price": 18.794281600041224,
+          "color from legend": 2,
+          "colors": [
+            100.33333333333334,
+            154.33333333333334,
+            199.33333333333334
+          ],
+          "dest_lat": 51.44981139329164,
+          "dest_lon": -2.58054661043566,
+          "destination": "bristol temple meads",
+          "origin": "london paddington",
+          "origin_lat": 51.517506448621155,
+          "origin_lon": -0.17745394955337404,
+          "tooltiptext": "London Paddington to Bristol Temple Meads\n \nRail has lower time than car (70%)\nMedian train time: 95 mins\nMedian train price: \u00a339.54\nCar time: 136 mins\nCar fuel price: \u00a318.79\n",
+          "train_duration_med": 95.0,
+          "train_price": 39.54,
+          "trainreltime": 0.6985294117647058
+        },
+        {
+          "car_duration_avg": 175.0,
+          "car_fuel_price": 24.164076800170445,
+          "color from legend": 1,
+          "colors": [
+            49.0,
+            54.0,
+            149.0
+          ],
+          "dest_lat": 51.47598525955394,
+          "dest_lon": -3.1786527061089997,
+          "destination": "cardiff central",
+          "origin": "london paddington",
+          "origin_lat": 51.517506448621155,
+          "origin_lon": -0.17745394955337404,
+          "tooltiptext": "London Paddington to Cardiff Central\n \nRail has lower time than car (65%)\nMedian train time: 113 mins\nMedian train price: \u00a349.82\nCar time: 175 mins\nCar fuel price: \u00a324.16\n",
+          "train_duration_med": 113.0,
+          "train_price": 49.82,
+          "trainreltime": 0.6457142857142857
+        },
+        {
+          "car_duration_avg": 430.0,
+          "car_fuel_price": 66.42635199999981,
+          "color from legend": 2,
+          "colors": [
+            100.33333333333334,
+            154.33333333333334,
+            199.33333333333334
+          ],
+          "dest_lat": 55.85975450705034,
+          "dest_lon": -4.257643159502638,
+          "destination": "glasgow central",
+          "origin": "london victoria",
+          "origin_lat": 51.49502816773417,
+          "origin_lon": -0.14438072783706812,
+          "tooltiptext": "London Victoria to Glasgow Central\n \nRail has lower time than car (71%)\nMedian train time: 305 mins\nMedian train price: \u00a374.06\nCar time: 430 mins\nCar fuel price: \u00a366.43\n",
+          "train_duration_med": 305.0,
+          "train_price": 74.06,
+          "trainreltime": 0.7093023255813954
+        },
+        {
+          "car_duration_avg": 216.0,
+          "car_fuel_price": 31.02548160024188,
+          "color from legend": 1,
+          "colors": [
+            49.0,
+            54.0,
+            149.0
+          ],
+          "dest_lat": 53.79429399546494,
+          "dest_lon": -1.547827258981434,
+          "destination": "leeds",
+          "origin": "london kings cross",
+          "origin_lat": 51.53066798144819,
+          "origin_lon": -0.12025306876634224,
+          "tooltiptext": "London Kings Cross to Leeds\n \nRail has lower time than car (62%)\nMedian train time: 135 mins\nMedian train price: \u00a348.03\nCar time: 216 mins\nCar fuel price: \u00a331.03\n",
+          "train_duration_med": 135.0,
+          "train_price": 48.03,
+          "trainreltime": 0.625
+        },
+        {
+          "car_duration_avg": 240.0,
+          "car_fuel_price": 33.71037919967285,
+          "color from legend": 1,
+          "colors": [
+            49.0,
+            54.0,
+            149.0
+          ],
+          "dest_lat": 53.40793882762651,
+          "dest_lon": -2.9773643756936,
+          "destination": "liverpool lime street",
+          "origin": "london euston",
+          "origin_lat": 51.52848652715305,
+          "origin_lon": -0.1351346344042589,
+          "tooltiptext": "London Euston to Liverpool Lime Street\n \nRail has lower time than car (59%)\nMedian train time: 141 mins\nMedian train price: \u00a349.10\nCar time: 240 mins\nCar fuel price: \u00a333.71\n",
+          "train_duration_med": 141.0,
+          "train_price": 49.1,
+          "trainreltime": 0.5875
+        },
+        {
+          "car_duration_avg": 237.0,
+          "car_fuel_price": 34.60534559947739,
+          "color from legend": 1,
+          "colors": [
+            49.0,
+            54.0,
+            149.0
+          ],
+          "dest_lat": 53.47686751819972,
+          "dest_lon": -2.229822358323369,
+          "destination": "manchester piccadilly",
+          "origin": "london euston",
+          "origin_lat": 51.52848652715305,
+          "origin_lon": -0.1351346344042589,
+          "tooltiptext": "London Euston to Manchester Piccadilly\n \nRail has lower time than car (56%)\nMedian train time: 132 mins\nMedian train price: \u00a351.79\nCar time: 237 mins\nCar fuel price: \u00a334.61\n",
+          "train_duration_med": 132.0,
+          "train_price": 51.79,
+          "trainreltime": 0.5569620253164557
+        },
+        {
+          "car_duration_avg": 189.0,
+          "car_fuel_price": 26.351771200033284,
+          "color from legend": 2,
+          "colors": [
+            100.33333333333334,
+            154.33333333333334,
+            199.33333333333334
+          ],
+          "dest_lat": 53.3784068761088,
+          "dest_lon": -1.4620783765072314,
+          "destination": "sheffield",
+          "origin": "london kings cross",
+          "origin_lat": 51.53066798144819,
+          "origin_lon": -0.12025306876634224,
+          "tooltiptext": "London Kings Cross to Sheffield\n \nRail has lower time than car (74%)\nMedian train time: 140 mins\nMedian train price: \u00a340.88\nCar time: 189 mins\nCar fuel price: \u00a326.35\n",
+          "train_duration_med": 140.0,
+          "train_price": 40.88,
+          "trainreltime": 0.7407407407407407
+        },
+        {
+          "car_duration_avg": 110.0,
+          "car_fuel_price": 13.921691200100632,
+          "color from legend": 3,
+          "colors": [
+            188.6666666666667,
+            225.66666666666669,
+            238.0
+          ],
+          "dest_lat": 52.47813008088713,
+          "dest_lon": -1.898673366512968,
+          "destination": "birmingham new street",
+          "origin": "manchester piccadilly",
+          "origin_lat": 53.47686751819972,
+          "origin_lon": -2.229822358323369,
+          "tooltiptext": "Manchester Piccadilly to Birmingham New Street\n \nRail has lower time than car (82%)\nMedian train time: 90 mins\nMedian train price: \u00a321.65\nCar time: 110 mins\nCar fuel price: \u00a313.92\n",
+          "train_duration_med": 90.0,
+          "train_price": 21.65,
+          "trainreltime": 0.8181818181818182
+        },
+        {
+          "car_duration_avg": 186.0,
+          "car_fuel_price": 26.94841439998853,
+          "color from legend": 4,
+          "colors": [
+            255.0,
+            255.0,
+            191.0
+          ],
+          "dest_lat": 51.44981139329164,
+          "dest_lon": -2.58054661043566,
+          "destination": "bristol temple meads",
+          "origin": "manchester piccadilly",
+          "origin_lat": 53.47686751819972,
+          "origin_lon": -2.229822358323369,
+          "tooltiptext": "Manchester Piccadilly to Bristol Temple Meads\n \nRail has lower time than car (99%)\nMedian train time: 185 mins\nMedian train price: \u00a352.92\nCar time: 186 mins\nCar fuel price: \u00a326.95\n",
+          "train_duration_med": 185.0,
+          "train_price": 52.92,
+          "trainreltime": 0.9946236559139785
+        },
+        {
+          "car_duration_avg": 217.0,
+          "car_fuel_price": 30.32939679999102,
+          "color from legend": 4,
+          "colors": [
+            255.0,
+            255.0,
+            191.0
+          ],
+          "dest_lat": 51.47598525955394,
+          "dest_lon": -3.1786527061089997,
+          "destination": "cardiff central",
+          "origin": "manchester piccadilly",
+          "origin_lat": 53.47686751819972,
+          "origin_lon": -2.229822358323369,
+          "tooltiptext": "Manchester Piccadilly to Cardiff Central\n \nRail has lower time than car (94%)\nMedian train time: 205 mins\nMedian train price: \u00a348.14\nCar time: 217 mins\nCar fuel price: \u00a330.33\n",
+          "train_duration_med": 205.0,
+          "train_price": 48.14,
+          "trainreltime": 0.9447004608294931
+        },
+        {
+          "car_duration_avg": 220.0,
+          "car_fuel_price": 34.406463999999694,
+          "color from legend": 3,
+          "colors": [
+            188.6666666666667,
+            225.66666666666669,
+            238.0
+          ],
+          "dest_lat": 55.85975450705034,
+          "dest_lon": -4.257643159502638,
+          "destination": "glasgow central",
+          "origin": "manchester piccadilly",
+          "origin_lat": 53.47686751819972,
+          "origin_lon": -2.229822358323369,
+          "tooltiptext": "Manchester Piccadilly to Glasgow Central\n \nRail has lower time than car (90%)\nMedian train time: 198 mins\nMedian train price: \u00a329.19\nCar time: 220 mins\nCar fuel price: \u00a334.41\n",
+          "train_duration_med": 198.0,
+          "train_price": 29.19,
+          "trainreltime": 0.9
+        },
+        {
+          "car_duration_avg": 63.0,
+          "car_fuel_price": 6.771908800001228,
+          "color from legend": 4,
+          "colors": [
+            255.0,
+            255.0,
+            191.0
+          ],
+          "dest_lat": 53.79429399546494,
+          "dest_lon": -1.547827258981434,
+          "destination": "leeds",
+          "origin": "manchester piccadilly",
+          "origin_lat": 53.47686751819972,
+          "origin_lon": -2.229822358323369,
+          "tooltiptext": "Manchester Piccadilly to Leeds\n \nRail has higher time than car (105%)\nMedian train time: 66 mins\nMedian train price: \u00a314.27\nCar time: 63 mins\nCar fuel price: \u00a36.77\n",
+          "train_duration_med": 66.0,
+          "train_price": 14.27,
+          "trainreltime": 1.0476190476190477
+        },
+        {
+          "car_duration_avg": 53.0,
+          "car_fuel_price": 5.409571199978089,
+          "color from legend": 2,
+          "colors": [
+            100.33333333333334,
+            154.33333333333334,
+            199.33333333333334
+          ],
+          "dest_lat": 53.40793882762651,
+          "dest_lon": -2.9773643756936,
+          "destination": "liverpool lime street",
+          "origin": "manchester victoria",
+          "origin_lat": 53.487349528894356,
+          "origin_lon": -2.2427042179711583,
+          "tooltiptext": "Manchester Victoria to Liverpool Lime Street\n \nRail has lower time than car (68%)\nMedian train time: 36 mins\nMedian train price: \u00a39.65\nCar time: 53 mins\nCar fuel price: \u00a35.41\n",
+          "train_duration_med": 36.0,
+          "train_price": 9.65,
+          "trainreltime": 0.6792452830188679
+        },
+        {
+          "car_duration_avg": 237.0,
+          "car_fuel_price": 34.60534559947739,
+          "color from legend": 1,
+          "colors": [
+            49.0,
+            54.0,
+            149.0
+          ],
+          "dest_lat": 51.52848652715305,
+          "dest_lon": -0.1351346344042589,
+          "destination": "london euston",
+          "origin": "manchester piccadilly",
+          "origin_lat": 53.47686751819972,
+          "origin_lon": -2.229822358323369,
+          "tooltiptext": "Manchester Piccadilly to London Euston\n \nRail has lower time than car (56%)\nMedian train time: 132 mins\nMedian train price: \u00a351.79\nCar time: 237 mins\nCar fuel price: \u00a334.61\n",
+          "train_duration_med": 132.0,
+          "train_price": 51.79,
+          "trainreltime": 0.5569620253164557
+        },
+        {
+          "car_duration_avg": 78.0,
+          "car_fuel_price": 6.07582400002801,
+          "color from legend": 4,
+          "colors": [
+            255.0,
+            255.0,
+            191.0
+          ],
+          "dest_lat": 53.3784068761088,
+          "dest_lon": -1.4620783765072314,
+          "destination": "sheffield",
+          "origin": "manchester piccadilly",
+          "origin_lat": 53.47686751819972,
+          "origin_lon": -2.229822358323369,
+          "tooltiptext": "Manchester Piccadilly to Sheffield\n \nRail has equal time to car (100%)\nMedian train time: 78 mins\nMedian train price: \u00a39.58\nCar time: 78 mins\nCar fuel price: \u00a36.08\n",
+          "train_duration_med": 78.0,
+          "train_price": 9.58,
+          "trainreltime": 1.0
+        },
+        {
+          "car_duration_avg": 105.0,
+          "car_fuel_price": 14.418894399970592,
+          "color from legend": 2,
+          "colors": [
+            100.33333333333334,
+            154.33333333333334,
+            199.33333333333334
+          ],
+          "dest_lat": 52.47813008088713,
+          "dest_lon": -1.898673366512968,
+          "destination": "birmingham new street",
+          "origin": "sheffield",
+          "origin_lat": 53.3784068761088,
+          "origin_lon": -1.4620783765072314,
+          "tooltiptext": "Sheffield to Birmingham New Street\n \nRail has lower time than car (72%)\nMedian train time: 76 mins\nMedian train price: \u00a323.83\nCar time: 105 mins\nCar fuel price: \u00a314.42\n",
+          "train_duration_med": 76.0,
+          "train_price": 23.83,
+          "trainreltime": 0.7238095238095238
+        },
+        {
+          "car_duration_avg": 183.0,
+          "car_fuel_price": 28.440025600006173,
+          "color from legend": 3,
+          "colors": [
+            188.6666666666667,
+            225.66666666666669,
+            238.0
+          ],
+          "dest_lat": 51.44981139329164,
+          "dest_lon": -2.58054661043566,
+          "destination": "bristol temple meads",
+          "origin": "sheffield",
+          "origin_lat": 53.3784068761088,
+          "origin_lon": -1.4620783765072314,
+          "tooltiptext": "Sheffield to Bristol Temple Meads\n \nRail has lower time than car (89%)\nMedian train time: 163 mins\nMedian train price: \u00a359.59\nCar time: 183 mins\nCar fuel price: \u00a328.44\n",
+          "train_duration_med": 163.0,
+          "train_price": 59.59,
+          "trainreltime": 0.8907103825136612
+        },
+        {
+          "car_duration_avg": 215.0,
+          "car_fuel_price": 31.82100639999597,
+          "color from legend": 4,
+          "colors": [
+            255.0,
+            255.0,
+            191.0
+          ],
+          "dest_lat": 51.47598525955394,
+          "dest_lon": -3.1786527061089997,
+          "destination": "cardiff central",
+          "origin": "sheffield",
+          "origin_lat": 53.3784068761088,
+          "origin_lon": -1.4620783765072314,
+          "tooltiptext": "Sheffield to Cardiff Central\n \nRail has lower time than car (97%)\nMedian train time: 209 mins\nMedian train price: \u00a359.43\nCar time: 215 mins\nCar fuel price: \u00a331.82\n",
+          "train_duration_med": 209.0,
+          "train_price": 59.43,
+          "trainreltime": 0.9720930232558139
+        },
+        {
+          "car_duration_avg": 263.0,
+          "car_fuel_price": 40.67122399999359,
+          "color from legend": 4,
+          "colors": [
+            255.0,
+            255.0,
+            191.0
+          ],
+          "dest_lat": 55.85975450705034,
+          "dest_lon": -4.257643159502638,
+          "destination": "glasgow central",
+          "origin": "sheffield",
+          "origin_lat": 53.3784068761088,
+          "origin_lon": -1.4620783765072314,
+          "tooltiptext": "Sheffield to Glasgow Central\n \nRail has higher time than car (105%)\nMedian train time: 276 mins\nMedian train price: \u00a341.68\nCar time: 263 mins\nCar fuel price: \u00a340.67\n",
+          "train_duration_med": 276.0,
+          "train_price": 41.68,
+          "trainreltime": 1.049429657794677
+        },
+        {
+          "car_duration_avg": 46.0,
+          "car_fuel_price": 5.568676800001361,
+          "color from legend": 3,
+          "colors": [
+            188.6666666666667,
+            225.66666666666669,
+            238.0
+          ],
+          "dest_lat": 53.79429399546494,
+          "dest_lon": -1.547827258981434,
+          "destination": "leeds",
+          "origin": "sheffield",
+          "origin_lat": 53.3784068761088,
+          "origin_lon": -1.4620783765072314,
+          "tooltiptext": "Sheffield to Leeds\n \nRail has lower time than car (91%)\nMedian train time: 42 mins\nMedian train price: \u00a38.35\nCar time: 46 mins\nCar fuel price: \u00a35.57\n",
+          "train_duration_med": 42.0,
+          "train_price": 8.35,
+          "trainreltime": 0.9130434782608695
+        },
+        {
+          "car_duration_avg": 123.0,
+          "car_fuel_price": 12.529521599994991,
+          "color from legend": 3,
+          "colors": [
+            188.6666666666667,
+            225.66666666666669,
+            238.0
+          ],
+          "dest_lat": 53.40793882762651,
+          "dest_lon": -2.9773643756936,
+          "destination": "liverpool lime street",
+          "origin": "sheffield",
+          "origin_lat": 53.3784068761088,
+          "origin_lon": -1.4620783765072314,
+          "tooltiptext": "Sheffield to Liverpool Lime Street\n \nRail has lower time than car (86%)\nMedian train time: 106 mins\nMedian train price: \u00a318.16\nCar time: 123 mins\nCar fuel price: \u00a312.53\n",
+          "train_duration_med": 106.0,
+          "train_price": 18.16,
+          "trainreltime": 0.8617886178861789
+        },
+        {
+          "car_duration_avg": 189.0,
+          "car_fuel_price": 26.351771200033284,
+          "color from legend": 2,
+          "colors": [
+            100.33333333333334,
+            154.33333333333334,
+            199.33333333333334
+          ],
+          "dest_lat": 51.53066798144819,
+          "dest_lon": -0.12025306876634224,
+          "destination": "london kings cross",
+          "origin": "sheffield",
+          "origin_lat": 53.3784068761088,
+          "origin_lon": -1.4620783765072314,
+          "tooltiptext": "Sheffield to London Kings Cross\n \nRail has lower time than car (74%)\nMedian train time: 140 mins\nMedian train price: \u00a340.88\nCar time: 189 mins\nCar fuel price: \u00a326.35\n",
+          "train_duration_med": 140.0,
+          "train_price": 40.88,
+          "trainreltime": 0.7407407407407407
+        },
+        {
+          "car_duration_avg": 78.0,
+          "car_fuel_price": 6.07582400002801,
+          "color from legend": 4,
+          "colors": [
+            255.0,
+            255.0,
+            191.0
+          ],
+          "dest_lat": 53.47686751819972,
+          "dest_lon": -2.229822358323369,
+          "destination": "manchester piccadilly",
+          "origin": "sheffield",
+          "origin_lat": 53.3784068761088,
+          "origin_lon": -1.4620783765072314,
+          "tooltiptext": "Sheffield to Manchester Piccadilly\n \nRail has equal time to car (100%)\nMedian train time: 78 mins\nMedian train price: \u00a39.58\nCar time: 78 mins\nCar fuel price: \u00a36.08\n",
+          "train_duration_med": 78.0,
+          "train_price": 9.58,
+          "trainreltime": 1.0
+        }
+      ],
+      "getSourceColor": "@@=colors",
+      "getSourcePosition": "@@=[origin_lon, origin_lat]",
+      "getTargetColor": "@@=colors",
+      "getTargetPosition": "@@=[dest_lon, dest_lat]",
+      "getWidth": "@@=3",
+      "id": "110bea05-e112-40f9-a6d6-ad4b59abe8f9",
+      "pickable": true
+    }
+  ],
+  "mapProvider": "carto",
+  "mapStyle": "https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json",
+  "views": [
+    {
+      "@@type": "MapView",
+      "controller": true
+    }
+  ]
+};
+    const tooltip = {'text': '{tooltiptext}'};
+    const customLibraries = null;
+    const configuration = null;
+
+    const deckInstance = createDeck({
+                  container,
+      jsonInput,
+      tooltip,
+      customLibraries,
+      configuration
+    });
+
+  </script>
+</html>
