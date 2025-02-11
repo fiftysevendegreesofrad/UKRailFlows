@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <title>Interactive maps of UK rail flows</title>
+</head>
+<body class="bg-dark text-light">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <div class="container mt-5">
+    <div style="float: right; margin-left: 20px; margin-bottom: 20px;">
+    <img src="cardifflogo.png" width="180" height="180" alt="Logo" class="mb-3">
+    <br/>
+    <img src="greenalliancelogo.png" height="180" alt="Logo" class="mb-3">
+	<br/>
+	<img src="fitlogo.png" alt="Logo" class="mb-3">
+    </div>
+    <h1 class="display-4">Interactive maps of UK rail flows:<br/>Visualising costs and times</h1>
+    <p class="lead">These interactive maps accompany the Green Alliance report <i>Next Stop, Better Rail</i>.</p>
+    <ul>
+    <li>
+    Generalized costs assume a value of time of &pound;15/hour. Real values of time vary considerably depending on the traveller and trip purpose (usually less than this for leisure trips and more for business trips).
+    </li>
+    <li>Train costs are median values paid for a sample of ticket sales without railcards, reflecting a mixture of walk-up and advance tickets.</li>
+    <li>Train times are median values based on sampled customer departure times.</li>
+    <li>Car fuel costs are estimates from Trainline. Individual cars vary substantially in fuel costs. There are also further costs of owning a car besides fuel (depreciation, maintenance etc), but these maps use fuel cost alone as it is likely to have the greatest influence on mode choice for an individual trip.</li>
+    <li>
+    Full details of the method and data sources can be found in the technical report.
+    </li>
+    </ul>
+<table class="table table-dark">
+<thead><tr><th>Map data</th><th>Most journeys</th><th>Most passenger km</th><th>Principal routes between 10 largest urban areas</th></tr></thead>
+<tbody>
+<tr><td>Perceived generalized cost of rail vs car</td>
+<td><a href="Most journeys-rel_gc_vot15.html"><img src="Most journeys-rel_gc_vot15-small.png" alt="Link"></a></td>
+<td><a href="Most passenger km-rel_gc_vot15.html"><img src="Most passenger km-rel_gc_vot15-small.png" alt="Link"></a></td>
+<td><a href="Principal routes between 10 largest urban areas-rel_gc_vot15.html"><img src="Principal routes between 10 largest urban areas-rel_gc_vot15-small.png" alt="Link"></a></td>
+</tr>
+<tr><td>Relative price of rail vs car</td>
+<td><a href="Most journeys-trainrelcost.html"><img src="Most journeys-trainrelcost-small.png" alt="Link"></a></td>
+<td><a href="Most passenger km-trainrelcost.html"><img src="Most passenger km-trainrelcost-small.png" alt="Link"></a></td>
+<td><a href="Principal routes between 10 largest urban areas-trainrelcost.html"><img src="Principal routes between 10 largest urban areas-trainrelcost-small.png" alt="Link"></a></td>
+</tr>
+<tr><td>Relative time of rail vs car</td>
+<td><a href="Most journeys-trainreltime.html"><img src="Most journeys-trainreltime-small.png" alt="Link"></a></td>
+<td><a href="Most passenger km-trainreltime.html"><img src="Most passenger km-trainreltime-small.png" alt="Link"></a></td>
+<td><a href="Principal routes between 10 largest urban areas-trainreltime.html"><img src="Principal routes between 10 largest urban areas-trainreltime-small.png" alt="Link"></a></td>
+</tr>
+</tbody></table>
+
+    <p>&nbsp;</p>
+    <p>These maps were produced by Crispin Cooper, Cardiff University. The work was funded by the Foundation for Integrated Transport, and Trainline. The project was managed by Green Alliance. The maps contain data copyrighted to:
+    <ul>
+        <li>Trainline, anonymous data released under license for this project</li>
+        <li>Office of Road and Rail, released under Open Government License v3</li>
+        <li>OpenStreetMap contributors, released under the Open Database License</li>
+        <li>Ordnance Survey (C) Crown Copyright and Database Right 2020-24</li>
+    </ul>
+    <p>The interactive maps are built using the <a href="https://deck.gl/">deck.gl</a> and <a href="https://pydeck.gl/">pydeck</a> libraries.</p>
+</body>
+</html>
